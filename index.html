@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M.U.G.E.N Ultimate Arcade</title>
+<title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
 
 <style>
 :root{
     --red:#b00000;
     --yellow:#ffd200;
 }
+
+*{box-sizing:border-box}
 
 body{
     margin:0;
@@ -18,17 +20,18 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* ===== SCANLINES ===== */
+/* ===== SCANLINES ARCADE ===== */
 body::after{
     content:"";
     position:fixed;
     inset:0;
     background:linear-gradient(
-      rgba(255,255,255,.04) 50%,
-      rgba(0,0,0,.04) 50%
+        rgba(255,255,255,.04) 50%,
+        rgba(0,0,0,.04) 50%
     );
     background-size:100% 4px;
     pointer-events:none;
+    z-index:9999;
 }
 
 /* ===== MENU ===== */
@@ -43,11 +46,9 @@ body::after{
     padding:15px;
 }
 
-.sidebar h2{
-    color:var(--yellow);
-    text-align:center;
-    border-bottom:2px solid var(--yellow);
-    padding-bottom:8px;
+.sidebar img{
+    width:100%;
+    margin-bottom:15px;
 }
 
 .sidebar a{
@@ -113,6 +114,7 @@ h1,h2{
 
 .char h3{
     color:var(--yellow);
+    margin:10px 0 0;
 }
 
 /* ===== VS SCREEN ===== */
@@ -121,17 +123,17 @@ h1,h2{
     position:fixed;
     inset:0;
     background:#000;
-    z-index:999;
-    text-align:center;
-}
-
-#vs img{
-    max-width:200px;
+    z-index:10000;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
 #vs h1{
-    font-size:60px;
     color:var(--yellow);
+    font-size:48px;
+    margin-bottom:20px;
 }
 
 /* ===== MOBILE ===== */
@@ -143,7 +145,7 @@ h1,h2{
         border-right:none;
         border-bottom:4px solid var(--red);
     }
-    .content{margin-left:0;}
+    .content{margin-left:0}
 }
 </style>
 </head>
@@ -154,22 +156,32 @@ h1,h2{
 <audio id="sndSelect" src="assets/sounds/select.mp3"></audio>
 <audio id="sndFight" src="assets/sounds/fight.mp3"></audio>
 
+<!-- MENU -->
 <div class="sidebar">
-<h2>ARCADE</h2>
+<img src="assets/images/logo.png" alt="MUGEN">
 <a href="#sobre">Sobre</a>
 <a href="#tutorial">Tutorial</a>
 <a href="#requisitos">Requisitos</a>
 <a href="#instalacao">Instalação</a>
-<a href="#fighters">Personagens</a>
+<a href="#personagens">Personagens</a>
+<a href="#portfolio">Portfólio</a>
 </div>
 
+<!-- CONTEÚDO -->
 <div class="content">
 
 <section id="sobre">
-<h1>M.U.G.E.N Ultimate Arcade</h1>
+<h1>M.U.G.E.N Ultimate – Street Fighter Arcade</h1>
 <div class="box">
-<p>Guia completo estilo <b>Street Fighter Arcade</b>.</p>
-<p>Assets reais do jogo, visual de fliperama e navegação simples.</p>
+<p>
+Este site apresenta um <b>guia completo e visual</b> para instalação,
+configuração e uso do <b>M.U.G.E.N estilo Street Fighter Arcade</b>.
+</p>
+<p>
+O projeto foi desenvolvido como <b>portfólio técnico</b>,
+utilizando HTML, CSS e JavaScript puro,
+com identidade visual inspirada em fliperamas clássicos.
+</p>
 </div>
 </section>
 
@@ -178,10 +190,10 @@ h1,h2{
 <div class="box">
 <ol>
 <li>Baixe o M.U.G.E.N Ultimate</li>
-<li>Extraia o arquivo</li>
-<li>Execute <b>mugen.exe</b></li>
+<li>Extraia os arquivos com WinRAR ou 7-Zip</li>
+<li>Execute o arquivo <b>mugen.exe</b></li>
 <li>Configure controles em <b>Options</b></li>
-<li>Escolha seu lutador</li>
+<li>Escolha seu personagem e lute</li>
 </ol>
 </div>
 </section>
@@ -190,8 +202,9 @@ h1,h2{
 <h2>Requisitos</h2>
 <div class="box">
 <ul>
-<li>Windows 7+</li>
-<li>2GB de espaço</li>
+<li>Windows 7 / 10 / 11</li>
+<li>2 GB de espaço livre</li>
+<li>Placa de vídeo compatível com DirectX</li>
 <li>WinRAR ou 7-Zip</li>
 </ul>
 </div>
@@ -200,11 +213,14 @@ h1,h2{
 <section id="instalacao">
 <h2>Instalação</h2>
 <div class="box">
-<p>Extraia e execute <b>mugen.exe</b></p>
+<p>
+Após extrair os arquivos, basta executar <b>mugen.exe</b>.
+Não é necessária instalação adicional.
+</p>
 </div>
 </section>
 
-<section id="fighters">
+<section id="personagens">
 <h2>Select Your Fighter</h2>
 
 <div class="grid">
@@ -232,24 +248,38 @@ h1,h2{
 </div>
 </section>
 
+<section id="portfolio">
+<h2>Sobre o Projeto</h2>
+<div class="box">
+<p>
+Projeto desenvolvido para fins de <b>portfólio</b>,
+demonstrando organização de conteúdo,
+design temático e interatividade com JavaScript.
+</p>
+<p>
+Publicação realizada via <b>GitHub Pages</b>.
+</p>
+</div>
+</section>
+
 </div>
 
-<!-- VS SCREEN -->
+<!-- VS -->
 <div id="vs">
 <h1 id="vsText"></h1>
-<img src="assets/images/vs.png">
+<img src="assets/images/vs.png" alt="VS">
 </div>
 
 <script>
 function fight(p1,p2){
     document.getElementById("sndSelect").play();
-    document.getElementById("vs").style.display="block";
-    document.getElementById("vsText").innerText = p1+" VS "+p2;
+    document.getElementById("vsText").innerText = p1 + " VS " + p2;
+    document.getElementById("vs").style.display = "flex";
     setTimeout(()=>{
         document.getElementById("sndFight").play();
     },800);
     setTimeout(()=>{
-        document.getElementById("vs").style.display="none";
+        document.getElementById("vs").style.display = "none";
     },3000);
 }
 </script>
