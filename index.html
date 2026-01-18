@@ -2,137 +2,124 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
-
-<!-- FONTE ESTILO STREET FIGHTER -->
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>Tutorial Completo M.U.G.E.N – Profissional</title>
 
 <style>
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    background:
-        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
-        url("https://i.imgur.com/7wZKX3v.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f4f7;
+    color: #222;
 }
 
-/* ===== MENU LATERAL ===== /
+/* ===== MENU LATERAL FIXO ===== /
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 270px;
+    width: 260px;
     height: 100%;
-    background: linear-gradient(180deg, #c00000, #400000);
+    background-color: #1f2933;
+    color: #fff;
     padding: 20px;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.9);
     overflow-y: auto;
 }
 
 .sidebar h2 {
-    color: #ffcc00;
-    font-size: 26px;
-    text-align: center;
-    border-bottom: 2px solid #ffcc00;
-    padding-bottom: 10px;
-    text-shadow: 2px 2px 4px #000;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 8px;
 }
 
-.sidebar ul { list-style: none; padding: 0; }
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
 
-.sidebar li { margin: 14px 0; }
+.sidebar li {
+    margin: 10px 0;
+}
 
 .sidebar a {
-    color: #fff;
+    color: #cfd8dc;
     text-decoration: none;
-    font-size: 18px;
-    display: block;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .sidebar a:hover {
-    color: #ffcc00;
-    transform: translateX(5px);
+    color: #ffffff;
 }
 
 / ===== CONTEÚDO ===== /
 .content {
-    margin-left: 300px;
-    padding: 50px;
-    max-width: 1200px;
+    margin-left: 280px;
+    padding: 40px;
+    line-height: 1.7;
 }
 
 h1 {
-    font-size: 48px;
-    color: #ffcc00;
-    text-shadow: 3px 3px 6px #000;
-    border-bottom: 4px solid #c00000;
+    border-bottom: 4px solid #333;
+    padding-bottom: 10px;
 }
 
 h2 {
-    margin-top: 80px;
-    font-size: 34px;
-    color: #ffcc00;
-    border-left: 6px solid #c00000;
-    padding-left: 15px;
+    margin-top: 60px;
+    border-left: 6px solid #333;
+    padding-left: 12px;
 }
 
 .box {
-    background: rgba(0,0,0,0.75);
-    border: 2px solid #c00000;
-    border-radius: 10px;
-    padding: 25px;
-    margin-top: 20px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 15px;
 }
 
 .alert {
-    background: rgba(192,0,0,0.9);
-    border: 2px solid #ffcc00;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 25px 0;
-    font-size: 18px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
 }
 
 code {
-    background: #000;
-    color: #ffcc00;
-    padding: 5px 8px;
-    border-radius: 5px;
-    border: 1px solid #c00000;
+    background-color: #eee;
+    padding: 4px 6px;
+    border-radius: 4px;
 }
 
-/ ===== BOTÃO TOPO ===== /
+/ ===== BOTÃO VOLTAR AO TOPO ===== */
 #topo {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: radial-gradient(circle, #ffcc00, #c00000);
-    color: #000;
-    padding: 16px 18px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #1f2933;
+    color: #fff;
+    padding: 12px 15px;
     border-radius: 50%;
-    font-size: 22px;
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(255,204,0,0.9);
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/ ===== RESPONSIVO ===== */
-@media(max-width: 900px){
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-    .content {
-        margin-left: 0;
-        padding: 25px;
-    }
+#topo:hover {
+    background-color: #000;
+}
+
+footer {
+    margin-top: 80px;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
 }
 </style>
 </head>
@@ -141,116 +128,130 @@ code {
 
 <a id="inicio"></a>
 
-<!-- SOM DE MENU -->
-<audio id="hoverSound" src="https://www.myinstants.com/media/sounds/street-fighter-2-coin.mp3"></audio>
-
-<script>
-document.querySelectorAll(".sidebar a").forEach(link => {
-    link.addEventListener("mouseenter", () => {
-        document.getElementById("hoverSound").play();
-    });
-});
-</script>
-
-<!-- MENU -->
+<!-- MENU LATERAL -->
 <div class="sidebar">
-    <h2>🔥 ARCADE MENU</h2>
+    <h2>📌 Índice</h2>
     <ul>
         <li><a href="#requisitos">1️⃣ Requisitos</a></li>
-        <li><a href="#downloads">2️⃣ Downloads</a></li>
-        <li><a href="#instalacao">3️⃣ Instalação</a></li>
-        <li><a href="#abrir">4️⃣ Abrir o Jogo</a></li>
-        <li><a href="#controles">5️⃣ Controles</a></li>
-        <li><a href="#telacheia">6️⃣ Tela Cheia</a></li>
-        <li><a href="#problemas">7️⃣ Problemas</a></li>
-        <li><a href="#dicas">8️⃣ Dicas Finais</a></li>
+        <li><a href="#downloads">2️⃣ Onde baixar</a></li>
+        <li><a href="#baixar">3️⃣ Baixando</a></li>
+        <li><a href="#extrair">4️⃣ Extraindo</a></li>
+        <li><a href="#abrir">5️⃣ Abrindo</a></li>
+        <li><a href="#controles">6️⃣ Controles</a></li>
+        <li><a href="#telacheia">7️⃣ Tela cheia</a></li>
+        <li><a href="#problemas">8️⃣ Problemas</a></li>
+        <li><a href="#dicas">9️⃣ Dicas</a></li>
     </ul>
 </div>
 
 <!-- CONTEÚDO -->
 <div class="content">
 
-<h1>M.U.G.E.N ULTIMATE – STREET FIGHTER STYLE</h1>
+<h1>🎮 Tutorial Completo M.U.G.E.N</h1>
+
+<p>
+Guia profissional para <strong>baixar, instalar e jogar M.U.G.E.N</strong> com jogos prontos
+como Street Fighter x Mortal Kombat, Dragon Ball, Marvel e outros.
+</p>
 
 <div class="alert">
-Tutorial definitivo em estilo arcade clássico 🔥
+<strong>Atenção:</strong> M.U.G.E.N é uma engine gratuita. Jogos e personagens são criações de fãs.
 </div>
 
-<section id="requisitos">
-<h2>1️⃣ Requisitos</h2>
+<div id="requisitos">
+<h2>1️⃣ O que você vai precisar</h2>
 <div class="box">
 <ul>
-<li>Windows</li>
-<li>WinRAR ou 7-Zip</li>
-<li>Antivírus ativo</li>
+    <li>PC com Windows</li>
+    <li>WinRAR ou <a href="https://www.7-zip.org/" target="_blank">7-Zip</a></li>
+    <li>1 a 5 GB de espaço livre</li>
+    <li>Antivírus ativo</li>
 </ul>
 </div>
-</section>
+</div>
 
-<section id="downloads">
-<h2>2️⃣ Onde baixar</h2>
+<div id="downloads">
+<h2>2️⃣ Onde baixar jogos M.U.G.E.N</h2>
 <div class="box">
 <ul>
-<li><a href="https://www.baixesoft.com/category/jogos-mugen" target="_blank">Baixesoft</a></li>
-<li><a href="https://www.baixaki.com.br/jogos/luta/mortal-kombat-mugen-project/windows" target="_blank">Baixaki</a></li>
-<li><a href="https://www.tofreegamesplay.com/old-mugen-games" target="_blank">ToFreeGamesPlay</a></li>
+    <li><a href="https://www.baixesoft.com/category/jogos-mugen" target="_blank">Baixesoft</a></li>
+    <li><a href="https://www.baixaki.com.br/jogos/luta/mortal-kombat-mugen-project/windows" target="_blank">Baixaki</a></li>
+    <li><a href="https://www.tofreegamesplay.com/old-mugen-games" target="_blank">ToFreeGamesPlay</a></li>
 </ul>
 </div>
-</section>
-
-<section id="instalacao">
-<h2>3️⃣ Instalação</h2>
-<div class="box">
-<p>Baixe o jogo → Extraia → Abra a pasta.</p>
 </div>
-</section>
 
-<section id="abrir">
-<h2>4️⃣ Abrindo</h2>
+<div id="baixar">
+<h2>3️⃣ Baixando o jogo</h2>
 <div class="box">
-<p>Execute <code>mugen.exe</code></p>
+<ol>
+    <li>Escolha um MUGEN completo</li>
+    <li>Baixe o arquivo ZIP ou RAR</li>
+</ol>
 </div>
-</section>
+</div>
 
-<section id="controles">
-<h2>5️⃣ Controles</h2>
+<div id="extrair">
+<h2>4️⃣ Extraindo o jogo</h2>
+<div class="box">
+<ol>
+    <li>Botão direito → Extrair</li>
+    <li>Aguarde finalizar</li>
+</ol>
+</div>
+</div>
+
+<div id="abrir">
+<h2>5️⃣ Abrindo o jogo</h2>
+<div class="box">
+<p>Execute <code>mugen.exe</code> ou <code>game.exe</code>.</p>
+</div>
+</div>
+
+<div id="controles">
+<h2>6️⃣ Controles padrão</h2>
 <div class="box">
 <ul>
-<li>Setas – movimento</li>
-<li>A S D – socos</li>
-<li>Z X C – chutes</li>
+    <li>Setas: mover</li>
+    <li>A S D: socos</li>
+    <li>Z X C: chutes</li>
+    <li>Enter: start</li>
 </ul>
 </div>
-</section>
+</div>
 
-<section id="telacheia">
-<h2>6️⃣ Tela cheia</h2>
+<div id="telacheia">
+<h2>7️⃣ Tela cheia</h2>
 <div class="box">
 <code>ALT + ENTER</code>
 </div>
-</section>
-
-<section id="problemas">
-<h2>7️⃣ Problemas comuns</h2>
-<div class="box">
-<p>Tela preta → RenderMode = System</p>
 </div>
-</section>
 
-<section id="dicas">
-<h2>8️⃣ Dicas finais</h2>
+<div id="problemas">
+<h2>8️⃣ Problemas comuns</h2>
 <div class="box">
-<p>Packs “Ultimate” oferecem melhor experiência arcade.</p>
+<p><strong>Não abre:</strong> executar como administrador.</p>
+<p><strong>Tela preta:</strong> RenderMode = System</p>
 </div>
-</section>
+</div>
 
-<footer class="box">
+<div id="dicas">
+<h2>9️⃣ Dicas finais</h2>
+<div class="box">
+<ul>
+    <li>Packs “Ultimate” são os melhores</li>
+    <li>Evite fontes desconhecidas</li>
+</ul>
+</div>
+</div>
+
+<footer>
 <p>
-Projeto M.U.G.E.N – Estilo Street Fighter Arcade<br>
-HTML único • Offline • Profissional
+Tutorial M.U.G.E.N – arquivo único com menu lateral fixo e navegação profissional.
 </p>
 </footer>
 
 </div>
 
-<a id="topo" href="
+<!-- BOTÃO VOLTAR AO TOPO -->
+<a id="topo" href="#inicio" title="Vol
