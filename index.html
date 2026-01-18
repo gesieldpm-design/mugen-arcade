@@ -3,226 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
+<title>M.U.G.E.N Ultimate Arcade</title>
 
-<!-- Fonte arcade -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
-html { scroll-behavior: smooth; }
-
-body {
-    margin: 0;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    background: #000;
-    color: #f5f5f5;
+:root{
+    --red:#c00000;
+    --yellow:#ffcc00;
+    --dark:#050505;
 }
 
-/* ===== CAPA ===== */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+html{scroll-behavior:smooth;}
+
+body{
+    margin:0;
+    background:radial-gradient(circle at top,#111,#000 70%);
+    color:#eee;
+    font-family:'Bebas Neue',sans-serif;
 }
 
-.hero video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    filter: brightness(60%);
+/* ===== SCANLINES ===== */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:linear-gradient(
+        rgba(255,255,255,0.03) 50%,
+        rgba(0,0,0,0.03) 50%
+    );
+    background-size:100% 4px;
+    pointer-events:none;
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(0,0,0,.4), rgba(0,0,0,.9));
+/* ===== HERO ===== */
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
 }
 
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.hero video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.55) contrast(1.1);
 }
 
-.hero-content h1 {
-    font-size: 72px;
-    color: #ffcc00;
-    text-shadow: 4px 4px 10px #000;
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle,transparent 30%,#000 80%);
 }
 
-.hero-content h2 {
-    font-size: 32px;
-    margin-top: -20px;
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
 }
 
-.hero-content a {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 40px;
-    background: linear-gradient(180deg, #ffcc00, #c00000);
-    color: #000;
-    text-decoration: none;
-    font-size: 22px;
-    border-radius: 50px;
+.hero-content h1{
+    font-size:72px;
+    color:var(--yellow);
+    text-shadow:0 0 20px var(--red),4px 4px #000;
 }
 
-/* ===== MENU ===== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 260px;
-    height: 100%;
-    background: linear-gradient(180deg, #c00000, #400000);
-    padding: 20px;
-    box-shadow: 4px 0 15px rgba(0,0,0,.8);
+.hero-content h2{
+    margin-top:-20px;
+    font-size:30px;
+    letter-spacing:4px;
 }
 
-.sidebar h2 {
-    color: #ffcc00;
-    text-align: center;
-    border-bottom: 2px solid #ffcc00;
+.hero-content a{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 40px;
+    background:linear-gradient(180deg,var(--yellow),var(--red));
+    color:#000;
+    text-decoration:none;
+    border-radius:40px;
+    font-size:22px;
+    box-shadow:0 0 20px rgba(255,204,0,.6);
 }
 
-.sidebar a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    margin: 14px 0;
+/* ===== MENU ARCADE (ESTREITO) ===== */
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:200px;
+    height:100%;
+    background:
+      linear-gradient(180deg,#400000,#120000);
+    border-right:4px solid var(--red);
+    box-shadow:6px 0 20px rgba(0,0,0,.9);
+    padding:20px 10px;
 }
 
-.sidebar a:hover {
-    color: #ffcc00;
+.sidebar h2{
+    text-align:center;
+    color:var(--yellow);
+    font-size:26px;
+    border-bottom:2px solid var(--yellow);
+    padding-bottom:10px;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:14px 10px;
+    padding:10px;
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    border:2px solid transparent;
+}
+
+.sidebar a::before{
+    content:"▶";
+    color:var(--yellow);
+}
+
+.sidebar a:hover{
+    border:2px solid var(--yellow);
+    background:rgba(255,204,0,.1);
 }
 
 /* ===== CONTEÚDO ===== */
-.content {
-    margin-left: 280px;
-    padding: 50px;
+.content{
+    margin-left:220px;
+    padding:50px;
 }
 
-section {
-    margin-top: 80px;
+section{
+    margin-top:70px;
 }
 
-h2 {
-    color: #ffcc00;
-    border-left: 6px solid #c00000;
-    padding-left: 15px;
-    font-size: 34px;
+h2{
+    font-size:34px;
+    color:var(--yellow);
+    border-left:6px solid var(--red);
+    padding-left:15px;
 }
 
-.box {
-    background: rgba(0,0,0,.85);
-    border: 2px solid #c00000;
-    border-radius: 12px;
-    padding: 25px;
-    margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+/* ===== BOX HUD ===== */
+.box{
+    background:linear-gradient(180deg,#0b0b0b,#000);
+    border:2px solid var(--red);
+    border-radius:12px;
+    padding:25px;
+    margin-top:20px;
+    font-family:Arial,Helvetica,sans-serif;
+    box-shadow:0 0 20px rgba(192,0,0,.3);
 }
 
 /* ===== PERSONAGENS ===== */
-.personagens-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+.personagens-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    margin-top:30px;
 }
 
-.personagem {
-    background: linear-gradient(180deg, #111, #000);
-    border: 3px solid #c00000;
-    border-radius: 15px;
-    text-align: center;
-    padding: 20px;
-    transition: .3s;
+.personagem{
+    background:linear-gradient(180deg,#111,#000);
+    border:3px solid var(--red);
+    border-radius:14px;
+    text-align:center;
+    padding:20px;
+    transition:.25s;
 }
 
-.personagem:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255,204,0,.8);
+.personagem:hover{
+    transform:translateY(-6px) scale(1.04);
+    box-shadow:0 0 30px rgba(255,204,0,.8);
 }
 
-.personagem img {
-    width: 100%;
-    max-height: 220px;
-    object-fit: contain;
+.personagem img{
+    width:100%;
+    max-height:200px;
+    object-fit:contain;
 }
 
-.personagem h3 {
-    color: #ffcc00;
-    font-size: 26px;
-    margin: 15px 0 5px;
+.personagem h3{
+    color:var(--yellow);
+    font-size:24px;
 }
 
-.personagem p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+.personagem p{
+    font-size:14px;
 }
 
 /* ===== BOTÃO TOPO ===== */
-#topo {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: radial-gradient(circle, #ffcc00, #c00000);
-    color: #000;
-    padding: 14px;
-    border-radius: 50%;
-    text-decoration: none;
+#topo{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:radial-gradient(circle,var(--yellow),var(--red));
+    color:#000;
+    padding:14px;
+    border-radius:50%;
+    text-decoration:none;
+    box-shadow:0 0 20px rgba(255,204,0,.7);
 }
 
-/* ===== RESPONSIVO ===== */
-@media(max-width: 900px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        text-align: center;
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        display:flex;
+        justify-content:space-around;
+        border-right:none;
+        border-bottom:4px solid var(--red);
     }
 
-    .content {
-        margin-left: 0;
-        padding: 25px;
+    .sidebar h2{display:none;}
+
+    .content{
+        margin-left:0;
+        padding:25px;
     }
 
-    .hero-content h1 { font-size: 44px; }
-    .hero-content h2 { font-size: 22px; }
+    .hero-content h1{font-size:42px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- CAPA -->
 <section class="hero" id="inicio">
-    <video autoplay muted loop playsinline>
-        <source src="https://cdn.pixabay.com/video/2023/03/13/154493-807649554_large.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1>M.U.G.E.N ULTIMATE</h1>
-        <h2>Street Fighter Arcade</h2>
-        <a href="#requisitos">▶ START</a>
-    </div>
+<video autoplay muted loop playsinline>
+<source src="https://cdn.pixabay.com/video/2023/03/13/154493-807649554_large.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>M.U.G.E.N ULTIMATE</h1>
+<h2>ARCADE EDITION</h2>
+<a href="#requisitos">PRESS START</a>
+</div>
 </section>
 
-<!-- MENU -->
 <div class="sidebar">
-    <h2>🔥 MENU</h2>
-    <a href="#requisitos">Requisitos</a>
-    <a href="#instalacao">Instalação</a>
-    <a href="#personagens">Personagens</a>
-    <a href="#dicas">Dicas</a>
+<h2>ARCADE</h2>
+<a href="#requisitos">Requisitos</a>
+<a href="#instalacao">Instalação</a>
+<a href="#personagens">Personagens</a>
+<a href="#dicas">Dicas</a>
 </div>
 
-<!-- CONTEÚDO -->
 <div class="content">
 
 <section id="requisitos">
@@ -239,36 +274,28 @@ h2 {
 <section id="instalacao">
 <h2>Instalação</h2>
 <div class="box">
-<p>Baixe → Extraia → Execute <b>mugen.exe</b></p>
+Baixe → Extraia → Execute <b>mugen.exe</b>
 </div>
 </section>
 
 <section id="personagens">
 <h2>Personagens</h2>
-
 <div class="personagens-grid">
 <div class="personagem">
 <img src="https://i.imgur.com/8Q1ZQZB.png">
-<h3>Ryu</h3>
-<p>Hadouken</p>
+<h3>Ryu</h3><p>Hadouken</p>
 </div>
-
 <div class="personagem">
 <img src="https://i.imgur.com/zZ9Zz9N.png">
-<h3>Ken</h3>
-<p>Shoryuken</p>
+<h3>Ken</h3><p>Shoryuken</p>
 </div>
-
 <div class="personagem">
 <img src="https://i.imgur.com/4L6vFQp.png">
-<h3>Chun-Li</h3>
-<p>Lightning Kick</p>
+<h3>Chun-Li</h3><p>Lightning Kick</p>
 </div>
-
 <div class="personagem">
 <img src="https://i.imgur.com/B4WJZcT.png">
-<h3>Akuma</h3>
-<p>Raging Demon</p>
+<h3>Akuma</h3><p>Raging Demon</p>
 </div>
 </div>
 </section>
@@ -276,7 +303,7 @@ h2 {
 <section id="dicas">
 <h2>Dicas</h2>
 <div class="box">
-<p>Use versões Ultimate para melhor compatibilidade.</p>
+Use versões Ultimate para melhor compatibilidade.
 </div>
 </section>
 
