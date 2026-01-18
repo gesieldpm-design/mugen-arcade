@@ -11,32 +11,31 @@
 :root{
     --red:#c00000;
     --yellow:#ffcc00;
-    --dark:#050505;
 }
 
 html{scroll-behavior:smooth;}
 
 body{
     margin:0;
-    background:radial-gradient(circle at top,#111,#000 70%);
+    background:#000;
     color:#eee;
     font-family:'Bebas Neue',sans-serif;
 }
 
-/* ===== SCANLINES ===== */
+/* SCANLINES */
 body::after{
     content:"";
     position:fixed;
     inset:0;
     background:linear-gradient(
-        rgba(255,255,255,0.03) 50%,
-        rgba(0,0,0,0.03) 50%
+      rgba(255,255,255,0.03) 50%,
+      rgba(0,0,0,0.03) 50%
     );
     background-size:100% 4px;
     pointer-events:none;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
     height:100vh;
     position:relative;
@@ -49,13 +48,13 @@ body::after{
     width:100%;
     height:100%;
     object-fit:cover;
-    filter:brightness(.55) contrast(1.1);
+    filter:brightness(.5);
 }
 
 .hero-overlay{
     position:absolute;
     inset:0;
-    background:radial-gradient(circle,transparent 30%,#000 80%);
+    background:radial-gradient(circle,transparent 30%,#000 85%);
 }
 
 .hero-content{
@@ -69,59 +68,53 @@ body::after{
 .hero-content h1{
     font-size:72px;
     color:var(--yellow);
-    text-shadow:0 0 20px var(--red),4px 4px #000;
+    text-shadow:0 0 25px var(--red),4px 4px #000;
 }
 
 .hero-content h2{
     margin-top:-20px;
-    font-size:30px;
     letter-spacing:4px;
 }
 
-.hero-content a{
-    display:inline-block;
+/* PRESS START */
+.start{
     margin-top:30px;
-    padding:14px 40px;
-    background:linear-gradient(180deg,var(--yellow),var(--red));
-    color:#000;
-    text-decoration:none;
-    border-radius:40px;
-    font-size:22px;
-    box-shadow:0 0 20px rgba(255,204,0,.6);
+    font-size:28px;
+    color:var(--yellow);
+    animation:blink 1s infinite;
 }
 
-/* ===== MENU ARCADE (ESTREITO) ===== */
+@keyframes blink{
+    0%,50%,100%{opacity:1;}
+    25%,75%{opacity:0;}
+}
+
+/* MENU */
 .sidebar{
     position:fixed;
     top:0;
     left:0;
-    width:200px;
+    width:190px;
     height:100%;
-    background:
-      linear-gradient(180deg,#400000,#120000);
+    background:linear-gradient(180deg,#400000,#120000);
     border-right:4px solid var(--red);
-    box-shadow:6px 0 20px rgba(0,0,0,.9);
-    padding:20px 10px;
+    padding:15px 8px;
 }
 
 .sidebar h2{
     text-align:center;
     color:var(--yellow);
-    font-size:26px;
     border-bottom:2px solid var(--yellow);
-    padding-bottom:10px;
 }
 
 .sidebar a{
     display:flex;
-    align-items:center;
-    gap:10px;
-    margin:14px 10px;
-    padding:10px;
-    color:#fff;
+    gap:8px;
+    margin:14px;
+    padding:8px;
     text-decoration:none;
+    color:#fff;
     font-size:18px;
-    border:2px solid transparent;
 }
 
 .sidebar a::before{
@@ -130,48 +123,43 @@ body::after{
 }
 
 .sidebar a:hover{
-    border:2px solid var(--yellow);
     background:rgba(255,204,0,.1);
 }
 
-/* ===== CONTEÚDO ===== */
+/* CONTEÚDO */
 .content{
-    margin-left:220px;
-    padding:50px;
+    margin-left:210px;
+    padding:40px;
 }
 
-section{
-    margin-top:70px;
-}
+section{margin-top:80px;}
 
 h2{
-    font-size:34px;
     color:var(--yellow);
     border-left:6px solid var(--red);
     padding-left:15px;
+    font-size:34px;
 }
 
-/* ===== BOX HUD ===== */
 .box{
-    background:linear-gradient(180deg,#0b0b0b,#000);
+    background:#080808;
     border:2px solid var(--red);
     border-radius:12px;
     padding:25px;
     margin-top:20px;
     font-family:Arial,Helvetica,sans-serif;
-    box-shadow:0 0 20px rgba(192,0,0,.3);
 }
 
-/* ===== PERSONAGENS ===== */
-.personagens-grid{
+/* PERSONAGENS */
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:25px;
     margin-top:30px;
 }
 
-.personagem{
-    background:linear-gradient(180deg,#111,#000);
+.char{
+    background:#050505;
     border:3px solid var(--red);
     border-radius:14px;
     text-align:center;
@@ -179,27 +167,23 @@ h2{
     transition:.25s;
 }
 
-.personagem:hover{
-    transform:translateY(-6px) scale(1.04);
-    box-shadow:0 0 30px rgba(255,204,0,.8);
+.char:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(255,204,0,.8);
 }
 
-.personagem img{
+.char img{
     width:100%;
-    max-height:200px;
+    max-height:220px;
     object-fit:contain;
 }
 
-.personagem h3{
+.char h3{
     color:var(--yellow);
     font-size:24px;
 }
 
-.personagem p{
-    font-size:14px;
-}
-
-/* ===== BOTÃO TOPO ===== */
+/* TOPO */
 #topo{
     position:fixed;
     bottom:25px;
@@ -209,10 +193,9 @@ h2{
     padding:14px;
     border-radius:50%;
     text-decoration:none;
-    box-shadow:0 0 20px rgba(255,204,0,.7);
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:900px){
     .sidebar{
         position:relative;
@@ -223,39 +206,37 @@ h2{
         border-right:none;
         border-bottom:4px solid var(--red);
     }
-
     .sidebar h2{display:none;}
-
-    .content{
-        margin-left:0;
-        padding:25px;
-    }
-
-    .hero-content h1{font-size:42px;}
+    .content{margin-left:0;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- SOM ARCADE -->
+<audio id="click">
+<source src="https://assets.mixkit.co/active_storage/sfx/220/220-preview.mp3" type="audio/mpeg">
+</audio>
+
 <section class="hero" id="inicio">
 <video autoplay muted loop playsinline>
-<source src="https://cdn.pixabay.com/video/2023/03/13/154493-807649554_large.mp4" type="video/mp4">
+<source src="https://cdn.pixabay.com/video/2023/03/13/154493-807649554_large.mp4">
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-content">
 <h1>M.U.G.E.N ULTIMATE</h1>
-<h2>ARCADE EDITION</h2>
-<a href="#requisitos">PRESS START</a>
+<h2>STREET FIGHTER ARCADE</h2>
+<div class="start">PRESS START</div>
 </div>
 </section>
 
 <div class="sidebar">
 <h2>ARCADE</h2>
-<a href="#requisitos">Requisitos</a>
-<a href="#instalacao">Instalação</a>
-<a href="#personagens">Personagens</a>
-<a href="#dicas">Dicas</a>
+<a href="#requisitos" onclick="s()">Requisitos</a>
+<a href="#instalacao" onclick="s()">Instalação</a>
+<a href="#fighters" onclick="s()">Fighters</a>
+<a href="#dicas" onclick="s()">Dicas</a>
 </div>
 
 <div class="content">
@@ -263,11 +244,7 @@ h2{
 <section id="requisitos">
 <h2>Requisitos</h2>
 <div class="box">
-<ul>
-<li>Windows</li>
-<li>WinRAR ou 7-Zip</li>
-<li>Espaço em disco</li>
-</ul>
+Windows • WinRAR / 7-Zip • Espaço em disco
 </div>
 </section>
 
@@ -278,38 +255,49 @@ Baixe → Extraia → Execute <b>mugen.exe</b>
 </div>
 </section>
 
-<section id="personagens">
-<h2>Personagens</h2>
-<div class="personagens-grid">
-<div class="personagem">
-<img src="https://i.imgur.com/8Q1ZQZB.png">
-<h3>Ryu</h3><p>Hadouken</p>
+<section id="fighters">
+<h2>SELECT YOUR FIGHTER</h2>
+<div class="grid">
+
+<div class="char">
+<img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Ryu_SF6.png">
+<h3>Ryu</h3>
 </div>
-<div class="personagem">
-<img src="https://i.imgur.com/zZ9Zz9N.png">
-<h3>Ken</h3><p>Shoryuken</p>
+
+<div class="char">
+<img src="https://upload.wikimedia.org/wikipedia/en/1/17/Ken_SF6.png">
+<h3>Ken</h3>
 </div>
-<div class="personagem">
-<img src="https://i.imgur.com/4L6vFQp.png">
-<h3>Chun-Li</h3><p>Lightning Kick</p>
+
+<div class="char">
+<img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Chun-Li_SF6.png">
+<h3>Chun-Li</h3>
 </div>
-<div class="personagem">
-<img src="https://i.imgur.com/B4WJZcT.png">
-<h3>Akuma</h3><p>Raging Demon</p>
+
+<div class="char">
+<img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Akuma_SF6.png">
+<h3>Akuma</h3>
 </div>
+
 </div>
 </section>
 
 <section id="dicas">
-<h2>Dicas</h2>
+<h2>Dicas Finais</h2>
 <div class="box">
-Use versões Ultimate para melhor compatibilidade.
+Use versões Ultimate para melhor estabilidade.
 </div>
 </section>
 
 </div>
 
 <a id="topo" href="#inicio">⬆</a>
+
+<script>
+function s(){
+document.getElementById("click").play();
+}
+</script>
 
 </body>
 </html>
