@@ -2,9 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
 
-<!-- Fonte estilo arcade -->
+<!-- Fonte arcade -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
@@ -17,7 +18,7 @@ body {
     color: #f5f5f5;
 }
 
-/* ===== CAPA COM VÍDEO ===== */
+/* ===== CAPA ===== */
 .hero {
     position: relative;
     height: 100vh;
@@ -37,7 +38,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+    background: radial-gradient(circle, rgba(0,0,0,.4), rgba(0,0,0,.9));
 }
 
 .hero-content {
@@ -51,7 +52,7 @@ body {
 .hero-content h1 {
     font-size: 72px;
     color: #ffcc00;
-    text-shadow: 4px 4px 8px #000;
+    text-shadow: 4px 4px 10px #000;
 }
 
 .hero-content h2 {
@@ -68,7 +69,6 @@ body {
     text-decoration: none;
     font-size: 22px;
     border-radius: 50px;
-    box-shadow: 0 0 20px rgba(255,204,0,0.8);
 }
 
 /* ===== MENU ===== */
@@ -80,7 +80,7 @@ body {
     height: 100%;
     background: linear-gradient(180deg, #c00000, #400000);
     padding: 20px;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.8);
+    box-shadow: 4px 0 15px rgba(0,0,0,.8);
 }
 
 .sidebar h2 {
@@ -94,7 +94,7 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    margin: 12px 0;
+    margin: 14px 0;
 }
 
 .sidebar a:hover {
@@ -119,19 +119,51 @@ h2 {
 }
 
 .box {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,.85);
     border: 2px solid #c00000;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 25px;
     margin-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-code {
-    background: #000;
+/* ===== PERSONAGENS ===== */
+.personagens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.personagem {
+    background: linear-gradient(180deg, #111, #000);
+    border: 3px solid #c00000;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px;
+    transition: .3s;
+}
+
+.personagem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,204,0,.8);
+}
+
+.personagem img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+}
+
+.personagem h3 {
     color: #ffcc00;
-    padding: 5px 8px;
-    border-radius: 5px;
+    font-size: 26px;
+    margin: 15px 0 5px;
+}
+
+.personagem p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
 /* ===== BOTÃO TOPO ===== */
@@ -141,11 +173,9 @@ code {
     right: 30px;
     background: radial-gradient(circle, #ffcc00, #c00000);
     color: #000;
-    padding: 16px;
+    padding: 14px;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 22px;
-    box-shadow: 0 0 20px rgba(255,204,0,0.9);
 }
 
 /* ===== RESPONSIVO ===== */
@@ -154,10 +184,16 @@ code {
         position: relative;
         width: 100%;
         height: auto;
+        text-align: center;
     }
+
     .content {
         margin-left: 0;
+        padding: 25px;
     }
+
+    .hero-content h1 { font-size: 44px; }
+    .hero-content h2 { font-size: 22px; }
 }
 </style>
 </head>
@@ -173,7 +209,7 @@ code {
     <div class="hero-content">
         <h1>M.U.G.E.N ULTIMATE</h1>
         <h2>Street Fighter Arcade</h2>
-        <a href="#requisitos">▶ INICIAR</a>
+        <a href="#requisitos">▶ START</a>
     </div>
 </section>
 
@@ -181,10 +217,8 @@ code {
 <div class="sidebar">
     <h2>🔥 MENU</h2>
     <a href="#requisitos">Requisitos</a>
-    <a href="#downloads">Downloads</a>
     <a href="#instalacao">Instalação</a>
-    <a href="#controles">Controles</a>
-    <a href="#problemas">Problemas</a>
+    <a href="#personagens">Personagens</a>
     <a href="#dicas">Dicas</a>
 </div>
 
@@ -202,45 +236,47 @@ code {
 </div>
 </section>
 
-<section id="downloads">
-<h2>Onde baixar</h2>
-<div class="box">
-<ul>
-<li><a href="https://www.baixesoft.com/category/jogos-mugen" target="_blank">Baixesoft</a></li>
-<li><a href="https://www.baixaki.com.br" target="_blank">Baixaki</a></li>
-</ul>
-</div>
-</section>
-
 <section id="instalacao">
 <h2>Instalação</h2>
 <div class="box">
-<p>Baixe → Extraia → Execute <code>mugen.exe</code></p>
+<p>Baixe → Extraia → Execute <b>mugen.exe</b></p>
 </div>
 </section>
 
-<section id="controles">
-<h2>Controles</h2>
-<div class="box">
-<ul>
-<li>Setas: mover</li>
-<li>A S D: socos</li>
-<li>Z X C: chutes</li>
-</ul>
-</div>
-</section>
+<section id="personagens">
+<h2>Personagens</h2>
 
-<section id="problemas">
-<h2>Problemas comuns</h2>
-<div class="box">
-<p>Tela preta → RenderMode = System</p>
+<div class="personagens-grid">
+<div class="personagem">
+<img src="https://i.imgur.com/8Q1ZQZB.png">
+<h3>Ryu</h3>
+<p>Hadouken</p>
+</div>
+
+<div class="personagem">
+<img src="https://i.imgur.com/zZ9Zz9N.png">
+<h3>Ken</h3>
+<p>Shoryuken</p>
+</div>
+
+<div class="personagem">
+<img src="https://i.imgur.com/4L6vFQp.png">
+<h3>Chun-Li</h3>
+<p>Lightning Kick</p>
+</div>
+
+<div class="personagem">
+<img src="https://i.imgur.com/B4WJZcT.png">
+<h3>Akuma</h3>
+<p>Raging Demon</p>
+</div>
 </div>
 </section>
 
 <section id="dicas">
-<h2>Dicas finais</h2>
+<h2>Dicas</h2>
 <div class="box">
-<p>Prefira versões “Ultimate”.</p>
+<p>Use versões Ultimate para melhor compatibilidade.</p>
 </div>
 </section>
 
