@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
+
+<!-- Fonte estilo arcade -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background: #000;
+    color: #f5f5f5;
+}
+
+/* ===== CAPA COM VÍDEO ===== /
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    filter: brightness(60%);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 72px;
+    color: #ffcc00;
+    text-shadow: 4px 4px 8px #000;
+}
+
+.hero-content h2 {
+    font-size: 32px;
+    margin-top: -20px;
+}
+
+.hero-content a {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 40px;
+    background: linear-gradient(180deg, #ffcc00, #c00000);
+    color: #000;
+    text-decoration: none;
+    font-size: 22px;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(255,204,0,0.8);
+}
+
+/ ===== MENU ===== /
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(180deg, #c00000, #400000);
+    padding: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.8);
+}
+
+.sidebar h2 {
+    color: #ffcc00;
+    text-align: center;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.sidebar a:hover {
+    color: #ffcc00;
+}
+
+/ ===== CONTEÚDO ===== /
+.content {
+    margin-left: 280px;
+    padding: 50px;
+}
+
+section {
+    margin-top: 80px;
+}
+
+h2 {
+    color: #ffcc00;
+    border-left: 6px solid #c00000;
+    padding-left: 15px;
+    font-size: 34px;
+}
+
+.box {
+    background: rgba(0,0,0,0.8);
+    border: 2px solid #c00000;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+code {
+    background: #000;
+    color: #ffcc00;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+/ ===== BOTÃO TOPO ===== /
+#topo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: radial-gradient(circle, #ffcc00, #c00000);
+    color: #000;
+    padding: 16px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 22px;
+    box-shadow: 0 0 20px rgba(255,204,0,0.9);
+}
+
+/ ===== RESPONSIVO ===== */
+@media(max-width: 900px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .content {
+        margin-left: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CAPA -->
+<section class="hero" id="inicio">
+    <video autoplay muted loop playsinline>
+        <source src="https://cdn.pixabay.com/video/2023/03/13/154493-807649554_large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>M.U.G.E.N ULTIMATE</h1>
+        <h2>Street Fighter Arcade</h2>
+        <a href="#requisitos">▶ INICIAR</a>
+    </div>
+</section>
+
+<!-- MENU -->
+<div class="sidebar">
+    <h2>🔥 MENU</h2>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#instalacao">Instalação</a>
+    <a href="#controles">Controles</a>
+    <a href="#problemas">Problemas</a>
+    <a href="#dicas">Dicas</a>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content">
+
+<section id="requisitos">
+<h2>Requisitos</h2>
+<div class="box">
+<ul>
+<li>Windows</li>
+<li>WinRAR ou 7-Zip</li>
+<li>Espaço em disco</li>
+</ul>
+</div>
+</section>
+
+<section id="downloads">
+<h2>Onde baixar</h2>
+<div class="box">
+<ul>
+<li><a href="https://www.baixesoft.com/category/jogos-mugen" target="_blank">Baixesoft</a></li>
+<li><a href="https://www.baixaki.com.br" target="_blank">Baixaki</a></li>
+</ul>
+</div>
+</section>
+
+<section id="instalacao">
+<h2>Instalação</h2>
+<div class="box">
+<p>Baixe → Extraia → Execute <code>mugen.exe</code></p>
+</div>
+</section>
+
+<section id="controles">
+<h2>Controles</h2>
+<div class="box">
+<ul>
+<li>Setas: mover</li>
+<li>A S D: socos</li>
+<li>Z X C: chutes</li>
+</ul>
+</div>
+</section>
+
+<section id="problemas">
+<h2>Problemas comuns</h2>
+<div class="box">
+<p>Tela preta → RenderMode = System</p>
+</div>
+</section>
+
+<section id="dicas">
+<h2>Dicas finais</h2>
+<div class="box">
+<p>Prefira versões “Ultimate”.</p>
+</div>
+</section>
+
+</div>
+
+<a id="topo" href="#inicio">⬆</a>
+
+</body>
+</html>
