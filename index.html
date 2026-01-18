@@ -2,287 +2,255 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M.U.G.E.N Ultimate – Street Fighter Arcade</title>
 
+<!-- FONTE ESTILO STREET FIGHTER -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
 <style>
-:root{
-    --red:#b00000;
-    --yellow:#ffd200;
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background:
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+        url("https://i.imgur.com/7wZKX3v.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: #f5f5f5;
 }
 
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    background:#000;
-    color:#eee;
-    font-family:Arial, Helvetica, sans-serif;
+/* ===== MENU LATERAL ===== /
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100%;
+    background: linear-gradient(180deg, #c00000, #400000);
+    padding: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.9);
+    overflow-y: auto;
 }
 
-/* ===== SCANLINES ARCADE ===== */
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:linear-gradient(
-        rgba(255,255,255,.04) 50%,
-        rgba(0,0,0,.04) 50%
-    );
-    background-size:100% 4px;
-    pointer-events:none;
-    z-index:9999;
+.sidebar h2 {
+    color: #ffcc00;
+    font-size: 26px;
+    text-align: center;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    text-shadow: 2px 2px 4px #000;
 }
 
-/* ===== MENU ===== */
-.sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:170px;
-    height:100%;
-    background:linear-gradient(180deg,#300,#100);
-    border-right:4px solid var(--red);
-    padding:15px;
+.sidebar ul { list-style: none; padding: 0; }
+
+.sidebar li { margin: 14px 0; }
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
 }
 
-.sidebar img{
-    width:100%;
-    margin-bottom:15px;
+.sidebar a:hover {
+    color: #ffcc00;
+    transform: translateX(5px);
 }
 
-.sidebar a{
-    display:block;
-    color:#fff;
-    text-decoration:none;
-    margin:14px 0;
-    font-size:15px;
+/ ===== CONTEÚDO ===== /
+.content {
+    margin-left: 300px;
+    padding: 50px;
+    max-width: 1200px;
 }
 
-.sidebar a:hover{
-    color:var(--yellow);
+h1 {
+    font-size: 48px;
+    color: #ffcc00;
+    text-shadow: 3px 3px 6px #000;
+    border-bottom: 4px solid #c00000;
 }
 
-/* ===== CONTEÚDO ===== */
-.content{
-    margin-left:190px;
-    padding:40px;
+h2 {
+    margin-top: 80px;
+    font-size: 34px;
+    color: #ffcc00;
+    border-left: 6px solid #c00000;
+    padding-left: 15px;
 }
 
-section{
-    margin-bottom:90px;
+.box {
+    background: rgba(0,0,0,0.75);
+    border: 2px solid #c00000;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-h1,h2{
-    color:var(--yellow);
+.alert {
+    background: rgba(192,0,0,0.9);
+    border: 2px solid #ffcc00;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    font-size: 18px;
 }
 
-.box{
-    background:#080808;
-    border:2px solid var(--red);
-    border-radius:10px;
-    padding:20px;
+code {
+    background: #000;
+    color: #ffcc00;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #c00000;
 }
 
-/* ===== PERSONAGENS ===== */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:20px;
+/ ===== BOTÃO TOPO ===== /
+#topo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: radial-gradient(circle, #ffcc00, #c00000);
+    color: #000;
+    padding: 16px 18px;
+    border-radius: 50%;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255,204,0,0.9);
 }
 
-.char{
-    background:#050505;
-    border:2px solid var(--red);
-    border-radius:10px;
-    text-align:center;
-    padding:15px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.char:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px rgba(255,210,0,.7);
-}
-
-.char img{
-    width:100%;
-    max-height:180px;
-    object-fit:contain;
-}
-
-.char h3{
-    color:var(--yellow);
-    margin:10px 0 0;
-}
-
-/* ===== VS SCREEN ===== */
-#vs{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#000;
-    z-index:10000;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-#vs h1{
-    color:var(--yellow);
-    font-size:48px;
-    margin-bottom:20px;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:900px){
-    .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
-        border-right:none;
-        border-bottom:4px solid var(--red);
+/ ===== RESPONSIVO ===== */
+@media(max-width: 900px){
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
     }
-    .content{margin-left:0}
+    .content {
+        margin-left: 0;
+        padding: 25px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SONS -->
-<audio id="sndSelect" src="assets/sounds/select.mp3"></audio>
-<audio id="sndFight" src="assets/sounds/fight.mp3"></audio>
+<a id="inicio"></a>
+
+<!-- SOM DE MENU -->
+<audio id="hoverSound" src="https://www.myinstants.com/media/sounds/street-fighter-2-coin.mp3"></audio>
+
+<script>
+document.querySelectorAll(".sidebar a").forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        document.getElementById("hoverSound").play();
+    });
+});
+</script>
 
 <!-- MENU -->
 <div class="sidebar">
-<img src="assets/images/logo.png" alt="MUGEN">
-<a href="#sobre">Sobre</a>
-<a href="#tutorial">Tutorial</a>
-<a href="#requisitos">Requisitos</a>
-<a href="#instalacao">Instalação</a>
-<a href="#personagens">Personagens</a>
-<a href="#portfolio">Portfólio</a>
+    <h2>🔥 ARCADE MENU</h2>
+    <ul>
+        <li><a href="#requisitos">1️⃣ Requisitos</a></li>
+        <li><a href="#downloads">2️⃣ Downloads</a></li>
+        <li><a href="#instalacao">3️⃣ Instalação</a></li>
+        <li><a href="#abrir">4️⃣ Abrir o Jogo</a></li>
+        <li><a href="#controles">5️⃣ Controles</a></li>
+        <li><a href="#telacheia">6️⃣ Tela Cheia</a></li>
+        <li><a href="#problemas">7️⃣ Problemas</a></li>
+        <li><a href="#dicas">8️⃣ Dicas Finais</a></li>
+    </ul>
 </div>
 
 <!-- CONTEÚDO -->
 <div class="content">
 
-<section id="sobre">
-<h1>M.U.G.E.N Ultimate – Street Fighter Arcade</h1>
-<div class="box">
-<p>
-Este site apresenta um <b>guia completo e visual</b> para instalação,
-configuração e uso do <b>M.U.G.E.N estilo Street Fighter Arcade</b>.
-</p>
-<p>
-O projeto foi desenvolvido como <b>portfólio técnico</b>,
-utilizando HTML, CSS e JavaScript puro,
-com identidade visual inspirada em fliperamas clássicos.
-</p>
-</div>
-</section>
+<h1>M.U.G.E.N ULTIMATE – STREET FIGHTER STYLE</h1>
 
-<section id="tutorial">
-<h2>🎓 Tutorial Rápido</h2>
-<div class="box">
-<ol>
-<li>Baixe o M.U.G.E.N Ultimate</li>
-<li>Extraia os arquivos com WinRAR ou 7-Zip</li>
-<li>Execute o arquivo <b>mugen.exe</b></li>
-<li>Configure controles em <b>Options</b></li>
-<li>Escolha seu personagem e lute</li>
-</ol>
+<div class="alert">
+Tutorial definitivo em estilo arcade clássico 🔥
 </div>
-</section>
 
 <section id="requisitos">
-<h2>Requisitos</h2>
+<h2>1️⃣ Requisitos</h2>
 <div class="box">
 <ul>
-<li>Windows 7 / 10 / 11</li>
-<li>2 GB de espaço livre</li>
-<li>Placa de vídeo compatível com DirectX</li>
+<li>Windows</li>
 <li>WinRAR ou 7-Zip</li>
+<li>Antivírus ativo</li>
+</ul>
+</div>
+</section>
+
+<section id="downloads">
+<h2>2️⃣ Onde baixar</h2>
+<div class="box">
+<ul>
+<li><a href="https://www.baixesoft.com/category/jogos-mugen" target="_blank">Baixesoft</a></li>
+<li><a href="https://www.baixaki.com.br/jogos/luta/mortal-kombat-mugen-project/windows" target="_blank">Baixaki</a></li>
+<li><a href="https://www.tofreegamesplay.com/old-mugen-games" target="_blank">ToFreeGamesPlay</a></li>
 </ul>
 </div>
 </section>
 
 <section id="instalacao">
-<h2>Instalação</h2>
+<h2>3️⃣ Instalação</h2>
 <div class="box">
-<p>
-Após extrair os arquivos, basta executar <b>mugen.exe</b>.
-Não é necessária instalação adicional.
-</p>
+<p>Baixe o jogo → Extraia → Abra a pasta.</p>
 </div>
 </section>
 
-<section id="personagens">
-<h2>Select Your Fighter</h2>
-
-<div class="grid">
-
-<div class="char" onclick="fight('Ryu','Ken')">
-<img src="assets/images/ryu.png">
-<h3>Ryu</h3>
-</div>
-
-<div class="char" onclick="fight('Ken','Ryu')">
-<img src="assets/images/ken.png">
-<h3>Ken</h3>
-</div>
-
-<div class="char" onclick="fight('Chun-Li','Akuma')">
-<img src="assets/images/chunli.png">
-<h3>Chun-Li</h3>
-</div>
-
-<div class="char" onclick="fight('Akuma','Ryu')">
-<img src="assets/images/akuma.png">
-<h3>Akuma</h3>
-</div>
-
-</div>
-</section>
-
-<section id="portfolio">
-<h2>Sobre o Projeto</h2>
+<section id="abrir">
+<h2>4️⃣ Abrindo</h2>
 <div class="box">
-<p>
-Projeto desenvolvido para fins de <b>portfólio</b>,
-demonstrando organização de conteúdo,
-design temático e interatividade com JavaScript.
-</p>
-<p>
-Publicação realizada via <b>GitHub Pages</b>.
-</p>
+<p>Execute <code>mugen.exe</code></p>
 </div>
 </section>
 
+<section id="controles">
+<h2>5️⃣ Controles</h2>
+<div class="box">
+<ul>
+<li>Setas – movimento</li>
+<li>A S D – socos</li>
+<li>Z X C – chutes</li>
+</ul>
+</div>
+</section>
+
+<section id="telacheia">
+<h2>6️⃣ Tela cheia</h2>
+<div class="box">
+<code>ALT + ENTER</code>
+</div>
+</section>
+
+<section id="problemas">
+<h2>7️⃣ Problemas comuns</h2>
+<div class="box">
+<p>Tela preta → RenderMode = System</p>
+</div>
+</section>
+
+<section id="dicas">
+<h2>8️⃣ Dicas finais</h2>
+<div class="box">
+<p>Packs “Ultimate” oferecem melhor experiência arcade.</p>
+</div>
+</section>
+
+<footer class="box">
+<p>
+Projeto M.U.G.E.N – Estilo Street Fighter Arcade<br>
+HTML único • Offline • Profissional
+</p>
+</footer>
+
 </div>
 
-<!-- VS -->
-<div id="vs">
-<h1 id="vsText"></h1>
-<img src="assets/images/vs.png" alt="VS">
-</div>
-
-<script>
-function fight(p1,p2){
-    document.getElementById("sndSelect").play();
-    document.getElementById("vsText").innerText = p1 + " VS " + p2;
-    document.getElementById("vs").style.display = "flex";
-    setTimeout(()=>{
-        document.getElementById("sndFight").play();
-    },800);
-    setTimeout(()=>{
-        document.getElementById("vs").style.display = "none";
-    },3000);
-}
-</script>
-
-</body>
-</html>
+<a id="topo" href="
